@@ -40,27 +40,30 @@ stmt:
     | FLOAT ID ';'             { printf("Declaración de flotante: %s\n", $2); }
     | STRING ID ';'            { printf("Declaración de cadena: %s\n", $2); }
     | ID '=' expr ';'          { printf("Asignación: %s = %d\n", $1, $3); }
-    | PRINT expr ';'           { printf("Imprimir: %d\n", $2); }
+    | PRINT ID ';'             { printf("Imprimir: %s\n", $2); }
+    | PRINT STRING_LITERAL ';' { printf("Imprimir: %s\n", $2); }
     | WRITE ID ';'             { printf("Entrada por teclado para: %s\n", $2); }
     | IF '(' expr ')' stmt     { printf("Sentencia if\n"); }
     | IF '(' expr ')' stmt ELSE stmt { printf("Sentencia if-else\n"); }
     | WHILE '(' expr ')' stmt  { printf("Bucle while\n"); }
     | FOR '(' stmt expr ';' stmt ')' stmt  { printf("Bucle for\n"); }
-    | '{' stmt_list '}'        { /* Bloque */ }
+    | '{' stmt_list '}'        { /* Bloque compuesto */ }
     ;
 
 expr:
-      expr '+' expr            { $$ = $1 + $3; }
-    | expr '-' expr            { $$ = $1 - $3; }
-    | expr '*' expr            { $$ = $1 * $3; }
-    | expr '/' expr            { $$ = $1 / $3; }
-    | expr EQ expr             { $$ = $1 == $3; }
-    | expr NEQ expr            { $$ = $1 != $3; }
-    | expr LEQ expr            { $$ = $1 <= $3; }
-    | expr GEQ expr            { $$ = $1 >= $3; }
-    | expr LT expr             { $$ = $1 < $3; }
-    | expr GT expr             { $$ = $1 > $3; }
-    | NUMBER                   { $$ = $1; }
+      expr '+' expr             { $$ = $1 + $3; }
+    | expr '-' expr             { $$ = $1 - $3; }
+    | expr '*' expr             { $$ = $1 * $3; }
+    | expr '/' expr             { $$ = $1 / $3; }
+    | expr EQ expr              { $$ = $1 == $3; }
+    | expr NEQ expr             { $$ = $1 != $3; }
+    | expr LEQ expr             { $$ = $1 <= $3; }
+    | expr GEQ expr             { $$ = $1 >= $3; }
+    | expr LT expr              { $$ = $1 < $3; }
+    | expr GT expr              { $$ = $1 > $3; }
+    | NUMBER                    { $$ = $1; }
+    | STRING_LITERAL            { $$ = 0; }
+    | ID                        { $$ = 0; }
     ;
 
 %%
