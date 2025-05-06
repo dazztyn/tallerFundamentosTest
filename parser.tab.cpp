@@ -83,7 +83,7 @@ void yyerror(const char *s) {
 
 ASTNode* root;
 
-#line 87 "parser.tab.c"
+#line 87 "parser.tab.cpp"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -116,8 +116,8 @@ ASTNode* root;
 
 /* Use api.header.include to #include this header
    instead of duplicating it here.  */
-#ifndef YY_YY_PARSER_TAB_H_INCLUDED
-# define YY_YY_PARSER_TAB_H_INCLUDED
+#ifndef YY_YY_PARSER_TAB_HPP_INCLUDED
+# define YY_YY_PARSER_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -164,7 +164,7 @@ union YYSTYPE
     char* id;
     ASTNode* node;
 
-#line 168 "parser.tab.c"
+#line 168 "parser.tab.cpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -177,7 +177,7 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_PARSER_TAB_H_INCLUDED  */
+#endif /* !YY_YY_PARSER_TAB_HPP_INCLUDED  */
 
 
 
@@ -1389,173 +1389,173 @@ yyreduce:
   case 2:
 #line 39 "parser.y"
               { root = (yyvsp[0].node); }
-#line 1393 "parser.tab.c"
+#line 1393 "parser.tab.cpp"
     break;
 
   case 3:
 #line 43 "parser.y"
                    { (yyval.node) = new CompoundStatement((yyvsp[-1].node), (yyvsp[0].node)); }
-#line 1399 "parser.tab.c"
+#line 1399 "parser.tab.cpp"
     break;
 
   case 4:
 #line 44 "parser.y"
                    { (yyval.node) = (yyvsp[0].node); }
-#line 1405 "parser.tab.c"
+#line 1405 "parser.tab.cpp"
     break;
 
   case 5:
 #line 48 "parser.y"
                                { (yyval.node) = new VarDecl("int", (yyvsp[-1].id)); }
-#line 1411 "parser.tab.c"
+#line 1411 "parser.tab.cpp"
     break;
 
   case 6:
 #line 49 "parser.y"
                                { (yyval.node) = new VarDecl("float", (yyvsp[-1].id)); }
-#line 1417 "parser.tab.c"
+#line 1417 "parser.tab.cpp"
     break;
 
   case 7:
 #line 50 "parser.y"
                                { (yyval.node) = new VarDecl("string", (yyvsp[-1].id)); }
-#line 1423 "parser.tab.c"
+#line 1423 "parser.tab.cpp"
     break;
 
   case 8:
 #line 51 "parser.y"
                                { (yyval.node) = new Assignment((yyvsp[-3].id), (yyvsp[-1].node)); }
-#line 1429 "parser.tab.c"
+#line 1429 "parser.tab.cpp"
     break;
 
   case 9:
 #line 52 "parser.y"
                                { (yyval.node) = new PrintStatement((yyvsp[-1].node)); }
-#line 1435 "parser.tab.c"
+#line 1435 "parser.tab.cpp"
     break;
 
   case 10:
 #line 53 "parser.y"
                                { (yyval.node) = new ReadStatement((yyvsp[-1].id)); }
-#line 1441 "parser.tab.c"
+#line 1441 "parser.tab.cpp"
     break;
 
   case 11:
 #line 54 "parser.y"
                                { (yyval.node) = new IfStatement((yyvsp[-2].node), (yyvsp[0].node), nullptr); }
-#line 1447 "parser.tab.c"
+#line 1447 "parser.tab.cpp"
     break;
 
   case 12:
 #line 55 "parser.y"
                                      { (yyval.node) = new IfStatement((yyvsp[-4].node), (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1453 "parser.tab.c"
+#line 1453 "parser.tab.cpp"
     break;
 
   case 13:
 #line 56 "parser.y"
                                { (yyval.node) = new WhileStatement((yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1459 "parser.tab.c"
+#line 1459 "parser.tab.cpp"
     break;
 
   case 14:
 #line 57 "parser.y"
                                { (yyval.node) = (yyvsp[-1].node); }
-#line 1465 "parser.tab.c"
+#line 1465 "parser.tab.cpp"
     break;
 
   case 15:
 #line 58 "parser.y"
                                            { (yyval.node) = new ForStatement((yyvsp[-5].node), (yyvsp[-4].node), (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1471 "parser.tab.c"
+#line 1471 "parser.tab.cpp"
     break;
 
   case 16:
 #line 62 "parser.y"
                                { (yyval.node) = new BinaryExpr("+", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1477 "parser.tab.c"
+#line 1477 "parser.tab.cpp"
     break;
 
   case 17:
 #line 63 "parser.y"
                                { (yyval.node) = new BinaryExpr("-", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1483 "parser.tab.c"
+#line 1483 "parser.tab.cpp"
     break;
 
   case 18:
 #line 64 "parser.y"
                                { (yyval.node) = new BinaryExpr("*", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1489 "parser.tab.c"
+#line 1489 "parser.tab.cpp"
     break;
 
   case 19:
 #line 65 "parser.y"
                                { (yyval.node) = new BinaryExpr("/", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1495 "parser.tab.c"
+#line 1495 "parser.tab.cpp"
     break;
 
   case 20:
 #line 66 "parser.y"
                                { (yyval.node) = new BinaryExpr("==", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1501 "parser.tab.c"
+#line 1501 "parser.tab.cpp"
     break;
 
   case 21:
 #line 67 "parser.y"
                                { (yyval.node) = new BinaryExpr("!=", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1507 "parser.tab.c"
+#line 1507 "parser.tab.cpp"
     break;
 
   case 22:
 #line 68 "parser.y"
                                { (yyval.node) = new BinaryExpr("<=", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1513 "parser.tab.c"
+#line 1513 "parser.tab.cpp"
     break;
 
   case 23:
 #line 69 "parser.y"
                                { (yyval.node) = new BinaryExpr(">=", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1519 "parser.tab.c"
+#line 1519 "parser.tab.cpp"
     break;
 
   case 24:
 #line 70 "parser.y"
                                { (yyval.node) = new BinaryExpr("<", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1525 "parser.tab.c"
+#line 1525 "parser.tab.cpp"
     break;
 
   case 25:
 #line 71 "parser.y"
                                { (yyval.node) = new BinaryExpr(">", (yyvsp[-2].node), (yyvsp[0].node)); }
-#line 1531 "parser.tab.c"
+#line 1531 "parser.tab.cpp"
     break;
 
   case 26:
 #line 72 "parser.y"
                                { (yyval.node) = new IntegerLiteral((yyvsp[0].ival)); }
-#line 1537 "parser.tab.c"
+#line 1537 "parser.tab.cpp"
     break;
 
   case 27:
 #line 73 "parser.y"
                                { (yyval.node) = new FloatLiteral((yyvsp[0].fval)); }
-#line 1543 "parser.tab.c"
+#line 1543 "parser.tab.cpp"
     break;
 
   case 28:
 #line 74 "parser.y"
                                { (yyval.node) = new StringLiteral((yyvsp[0].id)); }
-#line 1549 "parser.tab.c"
+#line 1549 "parser.tab.cpp"
     break;
 
   case 29:
 #line 75 "parser.y"
                                { (yyval.node) = new Variable((yyvsp[0].id)); }
-#line 1555 "parser.tab.c"
+#line 1555 "parser.tab.cpp"
     break;
 
 
-#line 1559 "parser.tab.c"
+#line 1559 "parser.tab.cpp"
 
       default: break;
     }

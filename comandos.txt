@@ -1,0 +1,2 @@
+flex -o lex.yy.cpp --c++ scanner.l // comando generacion lex.yy.cpp
+ bison -d -o parser.tab.cpp parser.y //comando generacion parsers
