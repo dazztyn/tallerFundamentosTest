@@ -1,15 +1,15 @@
 %{
-#include "parser.tab.hpp"
-#include <string>
-#include <cstdlib>
-using namespace std;
+#include "parser.tab.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 extern YYSTYPE yylval;
 %}
 
-DIGIT   [0-9]
+DIGIT   [0-9]+
 ID      [a-zA-Z_][a-zA-Z0-9_]*
-NUM     {DIGIT}+
-FLOAT   {DIGIT}+"."{DIGIT}+
+FLOAT   {DIGIT}"."{DIGIT}
 
 %%
 
@@ -21,7 +21,6 @@ FLOAT   {DIGIT}+"."{DIGIT}+
 "otherwise"     { return ELSE; }
 "while"         { return WHILE; }
 "for"           { return FOR; }
-
 
 "print"         { return PRINT; }
 "write"         { return WRITE; }
@@ -40,13 +39,18 @@ FLOAT   {DIGIT}+"."{DIGIT}+
 "="             { return '='; }
 
 {FLOAT}         { yylval.fval = atof(yytext); return FLOATNUM; }
-{NUM}           { yylval.ival = atoi(yytext); return NUMBER; }
+{DIGIT}         { yylval.ival = atoi(yytext); return NUMBER; }
 {ID}            { yylval.id = strdup(yytext); return ID; }
 
 \"[^\"]*\"      { yylval.id = strdup(yytext); return STRING_LITERAL; }
 
-[ \t\r\n]+      { /* ignorar espacios */ }
+
+[ \t\r\n]+   { /* Ignorar espacios */ }
 
 .               { return *yytext; }
 
 %%
+
+int yywrap() {
+    return 1;
+}
