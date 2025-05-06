@@ -71,7 +71,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "ast_c.h"
 int yylex(void);
 void yyerror(const char *s) {
     fprintf(stderr, "Error: %s\n", s);
