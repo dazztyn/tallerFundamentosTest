@@ -1,0 +1,13 @@
+integer x;
+x = 5;
+
+if (x > 3) {
+  print x;
+} else {
+  print "menor";
+}
+
+while (x > 0) {
+  print x;
+  x = x - 1;
+}

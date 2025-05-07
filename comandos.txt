@@ -1,0 +1,4 @@
+flex scanner.l                                  // comando generacion lex.yy
+bison -d parser.y                               //comando generacion parsers
+gcc parser.tab.c lex.yy.c ast_c.c -o dpp_compiler -lm   //compilacion general
+dpp_compiler < test.dpp                       //test hola mundo
